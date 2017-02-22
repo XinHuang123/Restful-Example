@@ -1,0 +1,60 @@
+<html ng-app="Example">
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="app.js"></script>
+		<script src="example.service.js"></script>
+		<script src="example.controller.js"></script>
+    </head>
+    
+    <body class="container" ng-controller="exampleController">
+        <h1>REST Example</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Seats</th>
+                    <th>Date</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" ng-model="example.name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="example.seat">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="example.date">
+                    </td>
+                    <td>
+                        <button ng-show="example" class="btn btn-success" ng-click="updateExample(example)">
+                            update
+                        </button>
+                        <button class="btn btn-primary" ng-click="createExample(example)">
+                            add
+                        </button>
+                    </td>                    
+                </tr>
+                
+                <tr ng-repeat="example in examples" ng-class="{'success': $index==selectedIndex}" ng-click="selectExample($index)">
+                    <td>{{example.name}}</td>
+                    <td>{{example.seat}}</td>
+                    <td>{{example.date}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="removeExample($index)">
+                            remove
+                        </button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        
+        
+    </body>
+
+</html>
